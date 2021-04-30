@@ -13,7 +13,7 @@ input.onButtonPressed(Button.B, function () {
 })
 function Init () {
     isStart = 0
-    间歇时间 = 300
+    IntermissionTime = 400
     // Tips for starting the game
     basic.showIcon(IconNames.Happy)
     basic.pause(1500)
@@ -25,7 +25,7 @@ function GameLoop () {
     Basket = game.createSprite(2, 4)
     Fruits = game.createSprite(2, 0)
     while (true) {
-        basic.pause(间歇时间)
+        basic.pause(IntermissionTime)
         Fruits.change(LedSpriteProperty.Y, 1)
         if (Fruits.isTouching(Basket)) {
             game.addScore(1)
@@ -40,7 +40,7 @@ function GameLoop () {
     }
 }
 let Fruits: game.LedSprite = null
-let 间歇时间 = 0
+let IntermissionTime = 0
 let Basket: game.LedSprite = null
 let isStart = 0
 Init()
