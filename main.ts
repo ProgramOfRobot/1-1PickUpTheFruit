@@ -1,19 +1,20 @@
-input.onLogoEvent(TouchButtonEvent.Pressed, function () {
-    isStart = 1
-})
 input.onButtonPressed(Button.A, function () {
-    Basket.change(LedSpriteProperty.X, -1)
+    if (isStart) {
+        Basket.change(LedSpriteProperty.X, -1)
+    }
 })
 function ResetSpritePosition (sprite: game.LedSprite) {
     sprite.set(LedSpriteProperty.Y, 0)
     sprite.set(LedSpriteProperty.X, randint(0, 4))
 }
 input.onButtonPressed(Button.B, function () {
-    Basket.change(LedSpriteProperty.X, 1)
+    if (isStart) {
+        Basket.change(LedSpriteProperty.X, 1)
+    }
 })
 function Init () {
     isStart = 0
-    IntermissionTime = 400
+    IntermissionTime = 450
     // Tips for starting the game
     basic.showIcon(IconNames.Happy)
     basic.pause(1500)
@@ -22,6 +23,7 @@ function GameLoop () {
     basic.clearScreen()
     game.setLife(5)
     game.setScore(0)
+    isStart = 1
     Basket = game.createSprite(2, 4)
     Fruits = game.createSprite(2, 0)
     while (true) {
